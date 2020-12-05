@@ -12,3 +12,5 @@ class PlaceSerializer(serializers.ModelSerializer):
             'city',
             'photo_url',
         )
+
+    
