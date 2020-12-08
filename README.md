@@ -2,6 +2,6 @@
 
 ## Tecnologias 
 Este projeto usa as seguintes tecnologias:
-- [Node.js][Flutter]
-- [TypeScript][Django]
-- [React][Django RestFramework]
+- [Flutter][https://flutter.dev/web]
+- [Django][https://www.djangoproject.com/]
+- [Django RestFramework][https://www.django-rest-framework.org/]
