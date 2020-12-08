@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:iphotos/components/skeleton.dart';
 import 'package:iphotos/components/slide_tile.dart';
 import 'package:iphotos/controller/home_controller.dart';
 import 'package:iphotos/models/place.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -59,13 +61,15 @@ class _HomeViewState extends State<HomeView> {
           child: FutureBuilder(
         future: homeController.getPlaces(),
         builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            List<Place> data = snapshot.data;
-            return _buildPagePlaces(data);
+          if (!snapshot.hasData) {
+            return Skeleton();
           } else {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
+            if (snapshot.data.isEmpty) {
+              return Container();
+            } else {
+              List<Place> data = snapshot.data;
+              return _buildPagePlaces(data);
+            }
           }
         },
       )),
@@ -88,7 +92,6 @@ class _HomeViewState extends State<HomeView> {
             },
           ),
         ),
-        //_buildBullets(),
       ],
     );
   }

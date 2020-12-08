@@ -9,10 +9,8 @@ class HomeController = HomeControllerBase with _$HomeController;
 abstract class HomeControllerBase with Store {
   @action
   Future<List<Place>> getPlaces() async {
-    print("oi");
     var response = await http.get('https://iphotos.herokuapp.com/api/places');
     String data = response.body;
-    print(data);
     List dataList = json.decode(data);
     List<Place> places = dataList.map((e) => Place.fromJson(e)).toList();
     print(places);
